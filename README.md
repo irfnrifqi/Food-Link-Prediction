@@ -1,2 +1,2 @@
 # Food-Link-Prediction
-LINK PREDICTION BETWEEN FOOD PRODUCTS WITH GRAPH EMBEDDING USING RANDOM FOREST ALGORITHM
+Link Predicition Between Food Products With Graph Embedding Using Random Forest Algorithm
