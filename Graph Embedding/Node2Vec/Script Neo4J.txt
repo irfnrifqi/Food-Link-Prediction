@@ -1,0 +1,17 @@
+--Melakukan Import Data Turtle--
+CALL n10s.rdf.import.fetch("https://raw.githubusercontent.com/utomogirraz/Halal-Tutorial/main/allturtle.ttl","Turtle")
+
+--Menghapus Food Product Yang Tidak Memiliki Ingredient--
+MATCH (n:Food)
+OPTIONAL MATCH (n)-[r:food__containsIngredient]>(i:Resource)
+WITH n, i
+WHERE i is Null
+DETACH DELETE n
+
+--Membuat Knowledge Graph--
+CALL gds.graph.create('myGraph', '*', '*');
+
+--Melakukan Graph Embedding--
+CALL gds.alpha.Node2Vec.stream('myGraph', {embeddingDimension: 100})
+YIELD nodeId, embedding
+RETURN nodeId, embedding
